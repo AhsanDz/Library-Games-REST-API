@@ -11,3 +11,5 @@ Route::get('/user', function (Request $request) {
 Route::post('/games', [GamesController::class, 'store']);
 Route::get('/games', [GamesController::class, 'index']);
 Route::get('/games/{id}', [GamesController::class, 'show']);
+Route::put('/games/{id}', [GamesController::class, 'update']);
+Route::patch('/games/{id}', [GamesController::class, 'update']);

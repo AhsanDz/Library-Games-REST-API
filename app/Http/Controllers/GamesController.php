@@ -35,10 +35,6 @@ class GamesController extends Controller
                 "errors" => $th->validator->errors()
             ], 422);
         }
-
-        // Manipulasi data dalam basis data
-        // Dipelajari setelah mendapatkan materi DDL dan DML di Basis Data
-
         // Mengembalikan respons dalam format JSON
         return response()->json([
             "message" => "Game created successfully (dummy)",
@@ -92,8 +88,6 @@ class GamesController extends Controller
     // GET /api/games/{id}
     public function show($id)
     {
-        // Ambil data dalam basis data berdasarkan ID
-        // Sementara menggunakan json dummy
         $game = [
             "id" => $id,
             "name" => "Hollow Knight",
@@ -112,5 +106,38 @@ class GamesController extends Controller
         ];
         // Mengembalikan respons dalam format JSON
         return response()->json($game);
+    }
+
+        // PUT and PATCH /api/games/{id}
+    public function update(Request $request, $id)
+    {
+        // Validasi data yang diterima dari request
+        // untuk memastikan format dan aturan yang sesuai
+        try {
+            $validated = $request->validate([
+                'name' => 'sometimes|required|string|max:50',
+                'feature' => 'sometimes|required|array',
+                'feature.single_player' => 'sometimes|boolean',
+                'feature.multiplayer' => 'sometimes|boolean',
+                'feature.achievement' => 'sometimes|boolean',
+                'feature.steam_cloud' => 'sometimes|boolean',
+                'feature.controller_support' => 'sometimes|boolean',
+                'feature.Remote_Play_On_Phone' => 'sometimes|boolean',
+                'feature.Remote_Play_On_Tablet' => 'sometimes|boolean',
+                'feature.Remote_Play_On_TV' => 'sometimes|boolean',
+                'feature.family_sharing' => 'sometimes|boolean',
+
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $th) {
+            return response()->json([
+                "message" => "Validation failed",
+                "errors" => $th->validator->errors()
+            ], 422);
+        }
+
+        return response()->json([
+            "message" => "Game {$id} updated successfully (dummy)",
+            "data" => array_merge(['id' => $id], $validated)
+        ]);
     }
 }
