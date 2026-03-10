@@ -45,4 +45,72 @@ class GamesController extends Controller
             "data" => $validated
         ], 201);
     }
+
+    // GET /api/Games
+    public function index()
+    {
+        // Ambil data dalam basis data
+        // Sementara menggunakan json dummy
+        $games = [
+            [
+                "id" => "000000000000001",
+                "name" => "Hollow Knight",
+                "feature" => [
+                    "single_player" => true,
+                    "multiplayer" => false,
+                    "achievement" => true,
+                    "steam_cloud" => true,
+                    "controller_support" => true,
+                    "Remote_Play_On_Phone" => true,
+                    "Remote_Play_On_Tablet" => true,
+                    "Remote_Play_On_TV" => true,
+                    "family_sharing" => true
+                ],
+                "genre" => ["Metroidvania", "Platformer", "Souls-like"]
+            ],
+            [
+                "id" => "000000000000002",
+                "name" => "Stardew Valley",
+                "feature" => [
+                    "single_player" => true,
+                    "multiplayer" => true,
+                    "achievement" => true,
+                    "steam_cloud" => true,
+                    "controller_support" => true,
+                    "Remote_Play_On_Phone" => true,
+                    "Remote_Play_On_Tablet" => true,
+                    "Remote_Play_On_TV" => true,
+                    "family_sharing" => true
+                ],
+                "genre" => ["Simulation", "Indie"]
+            ]
+        ];
+        // Mengembalikan respons dalam format JSON
+        return response()->json($games);
+    }
+
+    // GET /api/games/{id}
+    public function show($id)
+    {
+        // Ambil data dalam basis data berdasarkan ID
+        // Sementara menggunakan json dummy
+        $game = [
+            "id" => $id,
+            "name" => "Hollow Knight",
+            "feature" => [
+                "single_player" => true,
+                "multiplayer" => false,
+                "achievement" => true,
+                "steam_cloud" => true,
+                "controller_support" => true,
+                "Remote_Play_On_Phone" => true,
+                "Remote_Play_On_Tablet" => true,
+                "Remote_Play_On_TV" => true,
+                "family_sharing" => true        
+            ],
+            "genre" => ["Metroidvania", "Platformer", "Souls-like"]
+        ];
+        // Mengembalikan respons dalam format JSON
+        return response()->json($game);
+    }
 }

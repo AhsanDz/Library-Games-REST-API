@@ -9,3 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/games', [GamesController::class, 'store']);
+Route::get('/games', [GameController::class, 'index']);
+Route::get('/games/{id}', [GameController::class, 'show']);
