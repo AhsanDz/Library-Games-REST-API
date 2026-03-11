@@ -140,4 +140,15 @@ class GamesController extends Controller
             "data" => array_merge(['id' => $id], $validated)
         ]);
     }
+
+    public function destroy($id)
+    {
+
+        // Manipulasi data dalam basis data
+        // Dipelajari setelah mendapatkan materi DDL dan DML di Basis Data
+        // Mengembalikan respons dalam format JSON
+        return response()->json([
+            "message" => "Game {$id} deleted successfully (dummy)"
+        ]);
+    }
 }
