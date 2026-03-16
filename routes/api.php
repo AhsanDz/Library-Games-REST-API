@@ -8,9 +8,11 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::post('/games', [GamesController::class, 'store']);
 Route::get('/games', [GamesController::class, 'index']);
 Route::get('/games/{id}', [GamesController::class, 'show']);
+
+Route::post('/games', [GamesController::class, 'store']);
 Route::put('/games/{id}', [GamesController::class, 'update']);
 Route::patch('/games/{id}', [GamesController::class, 'update']);
+
 Route::delete('/games/{id}', [GamesController::class, 'destroy']);

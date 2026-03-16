@@ -37,7 +37,7 @@ class GamesController extends Controller
         }
         // Mengembalikan respons dalam format JSON
         return response()->json([
-            "message" => "Game created successfully (dummy)",
+            "message" => "Game created successfully",
             "data" => $validated
         ], 201);
     }
@@ -136,19 +136,15 @@ class GamesController extends Controller
         }
 
         return response()->json([
-            "message" => "Game {$id} updated successfully (dummy)",
+            "message" => "Game {$id} updated successfully",
             "data" => array_merge(['id' => $id], $validated)
         ]);
     }
 
     public function destroy($id)
     {
-
-        // Manipulasi data dalam basis data
-        // Dipelajari setelah mendapatkan materi DDL dan DML di Basis Data
-        // Mengembalikan respons dalam format JSON
         return response()->json([
-            "message" => "Game {$id} deleted successfully (dummy)"
+            "message" => "Game {$id} deleted successfully"
         ]);
     }
 }
